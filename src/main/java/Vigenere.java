@@ -2,8 +2,22 @@ import java.util.Scanner;
 
 public class Vigenere {
     public static String encryptVigenere(String message, String key) {
-        return message;
-        // REPLACE THIS WITH YOUR CODE
+        String boi = "";
+        int dum = 0;
+        for(int i = 0; i < message.length(); i++){
+            if(message.charAt(i)>96&&message.charAt(i)<123)
+                boi += (char)((message.charAt(i)-97+key.charAt(dum))%26+97);
+            else if(message.charAt(i)>64&&message.charAt(i)<91)
+                boi += (char)((message.charAt(i)-65+key.charAt(dum))%26+65);
+            else
+                boi += (char)(message.charAt(i));
+            if(dum==key.length()-1)
+                dum = 0;
+            else
+                dum ++;
+        }
+        return boi;
+        // I spent 45 minutes doing this and finishing the caesar
     }
 
     public static String decryptVigenere(String message, String key) {
